@@ -1,0 +1,16 @@
+@import "normalize.css/normalize.css";
+
+:root {
+  --backgroundColor: #ffffff;
+  --primaryColor: #000000;
+
+  --input-border: solid 1.5px var(--primaryColor);
+  --input-border-radius: 10px;
+  --input-height: 1.5rem;
+}
+
+body {
+  font-family: "Futura", -apple-system, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
