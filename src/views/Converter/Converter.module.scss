@@ -1,0 +1,22 @@
+.converter {
+  grid-area: converter;
+}
+
+.currency-input {
+  min-height: 100%;
+  margin-top: -52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  &__row {
+    display: flex;
+    gap: 8px;
+
+    & > input {
+      flex: 1;
+    }
+  }
+}

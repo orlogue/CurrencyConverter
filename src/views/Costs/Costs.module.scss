@@ -1,0 +1,22 @@
+.costs {
+  grid-area: costs;
+  margin-top: 0;
+}
+
+table {
+  display: inline-table;
+  text-align: center;
+  border-spacing: 10px;
+}
+
+.costs-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  margin-top: -52px;
+}
+
+.costs-row > table:last-child {
+  border-left: solid 1.5px;
+}
