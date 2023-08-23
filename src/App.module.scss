@@ -14,3 +14,15 @@ body {
   font-size: 16px;
   line-height: 1.5;
 }
+
+main {
+  display: grid;
+  width: calc(100vw - 3rem);
+  min-height: calc(100vh - 3rem);
+  gap: 1.5rem;
+  padding: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+          "converter history history"
+          "costs history history";
+}
