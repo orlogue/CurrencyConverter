@@ -18,7 +18,7 @@ function MinMax(rates: Rate[]): [min: number, max: number] {
 }
 
 export default function History() {
-  const { baseCurrency, targetCurrency, historicalRates } = useCurrency();
+  const { baseCurrency, targetCurrency, historicalRates, currencyRates } = useCurrency();
 
   const [rates, setRates] = useState<Rate[]>([]);
 
@@ -46,7 +46,10 @@ export default function History() {
   }
 
   useEffect(() => {
-    if (historicalRates && baseCurrency && targetCurrency && baseCurrency?.code in historicalRates) {
+    if (
+      historicalRates && baseCurrency && targetCurrency &&
+      baseCurrency.code in historicalRates &&
+      baseCurrency.code in currencyRates) {
       const temp: Rate[] = []
       for (const [date, rates] of Object.entries(historicalRates[baseCurrency.code])) {
         temp.push({
@@ -54,6 +57,12 @@ export default function History() {
           rate: rates[targetCurrency.code],
         });
       }
+      const date = new Date();
+      const today = date.toISOString().split('T')[0];
+      temp.push({
+        date: today,
+        rate: currencyRates[baseCurrency.code][targetCurrency.code]
+      });
       setRates(temp);
     }
   }, [historicalRates, baseCurrency, targetCurrency]);

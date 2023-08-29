@@ -99,7 +99,7 @@ export function useCurrencySource(): ICurrencyContext {
     const date = new Date();
     date.setDate(date.getDate() - 1);
     const yesterday = date.toISOString().split('T')[0];
-    date.setDate(date.getDate() - 9);
+    date.setDate(date.getDate() - 8);
     const tenDaysAgo = date.toISOString().split('T')[0];
 
     axios.get<{
