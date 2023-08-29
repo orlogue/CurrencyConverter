@@ -1,7 +1,7 @@
 section {
-  border-radius: 1rem;
-  border: solid 2px var(--primaryColor);
   padding: 12px;
+  border: solid 2px var(--primary-сolor);
+  border-radius: 1rem;
 }
 
 section.hidden {
@@ -13,7 +13,15 @@ section.hidden {
   display: flex;
   align-items: center;
 
-  @media (min-width: 769px) {
+  & > button {
+    position: absolute;
+  }
+
+  & > div {
+    flex: 1;
+  }
+
+  @media (width >= 769px) {
     &.rotate.hidden {
       flex-direction: column;
       height: 100%;
@@ -23,27 +31,20 @@ section.hidden {
       }
     }
   }
-
-  & > button {
-    position: absolute;
-  }
-  & > div {
-    flex: 1;
-  }
 }
 
 .hide-svg {
-  position: absolute;
   cursor: pointer;
+  position: absolute;
 
   &_closed {
-    position: absolute;
     cursor: pointer;
+    position: absolute;
     transform: rotate(180deg);
   }
 }
 
-@media (min-width: 769px) {
+@media (width >= 769px) {
   .rotate {
     & > .hide-svg {
       transform: rotate(-90deg);

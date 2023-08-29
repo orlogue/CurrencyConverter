@@ -1,32 +1,25 @@
 section.costs {
-  flex: 2;
   display: flex;
+  flex: 2;
   flex-direction: column;
 
-  @media (max-width: 879.98px) {
+  @media (width <= 879.98px) {
     flex: 0;
   }
 }
 
 table {
-  min-width: 160px;
-  //text-align: center;
   border-spacing: 10px;
-
-  @media (max-width: 395.98px) {
-    min-width: initial;
-  }
-
-  @media (max-width: 319.92px) {
-    font-size: 14px;
-  }
-}
-
-table {
+  min-width: 160px;
   padding: 0 16px;
 
-  @media (max-width: 395.98px) {
+  @media (width <= 395.98px) {
+    min-width: initial;
     padding: 0;
+  }
+
+  @media (width <= 319.92px) {
+    font-size: 14px;
   }
 }
 
@@ -41,15 +34,16 @@ td:first-child {
 .costs-row {
   display: grid;
   grid-template-columns: min-content min-content;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   padding: 16px 0;
 
-  @media (min-width: 880.02px) {
+  @media (width >= 880.02px) {
     flex: 1;
-    padding: 46px 0 16px 0;
     height: 100%;
     margin-top: -36px;
+    padding: 46px 0 16px;
   }
 }
 

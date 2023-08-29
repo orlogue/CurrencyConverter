@@ -9,12 +9,13 @@ section.converter {
 
 .currency-input {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 14px;
-  gap: 1rem;
   flex: 1;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 14px;
 
   &__row {
     display: flex;
@@ -28,6 +29,6 @@ section.converter {
 
 .per-unit {
   min-height: 21px;
-  font-size: 14px;
   margin-top: 4px;
+  font-size: 14px;
 }

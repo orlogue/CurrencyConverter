@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview --port 8080"
+    "preview": "vite preview --port 8080",
+    "lint:es": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint:es:fix": "npm run lint:es -- --fix",
+    "lint:css": "stylelint src",
+    "lint:css:fix": "npm run lint:css -- --fix"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -21,11 +24,20 @@
     "@vitejs/plugin-react": "^4.0.3",
     "axios": "^1.4.0",
     "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "normalize.css": "^8.0.1",
+    "prettier": "^3.0.3",
     "sass": "^1.66.1",
+    "stylelint": "^15.10.3",
+    "stylelint-config-clean-order": "^5.2.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^10.0.0",
     "typescript": "^5.0.2",
     "typescript-plugin-css-modules": "^5.0.1",
     "vite": "^4.4.5"

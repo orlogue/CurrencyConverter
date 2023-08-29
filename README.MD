@@ -7,12 +7,17 @@ Create `.env` based on `.env.example` and put API key there
 Run `npm install`
 
 ## Commands
+### Linting
+`npm run lint:es` to run ESLint check
+
+`npm run lint:es:fix` to fix ESLint errors
+
+`npm run lint:css` to run Stylelint check
+
+`npm run lint:css:fix`to fix Stylelint errors
+
 ### For development
-`npm run lint` to run ESLint check
-
 `npm run dev` to run server
-
-`npm run lint && npm run dev` to run both
 
 ### For production
 `npm run build` to generate static files into `/dist`

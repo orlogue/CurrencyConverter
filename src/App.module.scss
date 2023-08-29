@@ -1,10 +1,9 @@
 @import "normalize.css/normalize.css";
 
 :root {
-  --backgroundColor: #ffffff;
-  --primaryColor: #000000;
-
-  --input-border: solid 1.5px var(--primaryColor);
+  --background-сolor: #fff;
+  --primary-сolor: #000;
+  --input-border: solid 1.5px var(--primary-сolor);
   --input-border-radius: 10px;
   --input-height: 2.5rem;
 }
@@ -14,60 +13,60 @@
 }
 
 html, body {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 #root {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 body {
-  font-family: "Futura", -apple-system, Helvetica, Arial, sans-serif;
+  font-family: Futura, -apple-system, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-
-  accent-color: var(--primaryColor);
+  accent-color: var(--primary-сolor);
 }
 
 .wrapper {
   display: flex;
-  min-height: 100vh;
-  padding: 1.5rem;
   gap: 1.5rem;
 
-  height: 100%;
   width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 1.5rem;
   
-  @media (min-width: 1900px) or (min-height: 1900px) {
+  @media (width >= 1900px) or (height >= 1900px) {
     padding: 20vh 15vw;
   }
 
-  @media (min-width: 1441px) or (min-height: 1441px) {
+  @media (width >= 1441px) or (height >= 1441px) {
     padding: 10vh 10vw;
   }
 
-  @media (max-width: 879.98px) {
+  @media (width <= 879.98px) {
     flex-direction: column;
-    padding: 1rem;
     gap: 1rem;
+    padding: 1rem;
   }
 
-  @media (max-width: 480.98px) {
+  @media (width <= 480.98px) {
     padding: 0.75rem;
   }
 }
 
 .flex-column {
-  flex: 1;
   display: flex;
-  gap: 1.5rem;
+  flex: 1;
   flex-direction: column;
-  min-height: 100%;
-  min-width: 364px;
+  gap: 1.5rem;
 
-  @media (max-width: 879.98px) {
+  min-width: 364px;
+  min-height: 100%;
+
+  @media (width <= 879.98px) {
     gap: 1rem;
     min-width: auto;
   }
