@@ -26,15 +26,15 @@ export default function Converter() {
   useEffect(() => {
     if (currenciesLoaded) {
       setBasePerUnit({
-        toTarget: currencyRates[baseCurrency!.code][targetCurrency!.code].toFixed(2),
+        toTarget: currencyRates[baseCurrency.code][targetCurrency.code].toFixed(2),
         code: baseCurrency.code
       });
       setTargetPerUnit({
-        toBase: currencyRates[targetCurrency!.code][baseCurrency!.code].toFixed(2),
+        toBase: currencyRates[targetCurrency.code][baseCurrency.code].toFixed(2),
         code: targetCurrency.code
       });
       setTargetValue(() => {
-        return CalculateValue(baseValue, baseCurrency!.code, targetCurrency!.code);
+        return CalculateValue(baseValue, baseCurrency.code, targetCurrency.code);
       });
     }
   }, [baseCurrency, targetCurrency, currencyRates]);
@@ -47,7 +47,7 @@ export default function Converter() {
     }
     if (currenciesLoaded) {
       setTargetValue(
-        CalculateValue(input, baseCurrency!.code, targetCurrency!.code)
+        CalculateValue(input, baseCurrency.code, targetCurrency.code)
       );
     }
   }
@@ -60,7 +60,7 @@ export default function Converter() {
     }
     if (currenciesLoaded) {
       setBaseValue(
-        CalculateValue(input, targetCurrency!.code, baseCurrency!.code)
+        CalculateValue(input, targetCurrency.code, baseCurrency.code)
       );
     }
   }
