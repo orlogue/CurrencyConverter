@@ -5,13 +5,16 @@ import { useEffect, useState } from "react";
 
 interface Rate {
   date: string,
-  rate: number
+  rate: number,
 }
 
 function MinMax(rates: Rate[]): [min: number, max: number] {
-  const min = Math.min(...rates.map(item => item.rate))
-  const max = Math.max(...rates.map(item => item.rate))
-  return [min, max]
+  if (rates.length === 0) {
+    return [0, 0];
+  }
+  const min = Math.min(...rates.map(item => item.rate));
+  const max = Math.max(...rates.map(item => item.rate));
+  return [min, max];
 }
 
 export default function History() {
@@ -20,18 +23,25 @@ export default function History() {
   const [rates, setRates] = useState<Rate[]>([]);
 
   const [min, max] = MinMax(rates);
-  const average = (max + min) / 2
 
   function GenerateYValues() {
+    const average = (max + min) / 2;
     const precision = max >= 1 ? 2 : 5;
-    return (
-      <>
-        <div>{max.toFixed(precision)}</div>
-        <div>{((max + average) / 2).toFixed(precision)}</div>
-        <div>{average.toFixed(precision)}</div>
-        <div>{((min + average) / 2).toFixed(precision)}</div>
-        <div>{min.toFixed(precision)}</div>
-      </>
+    return (min && max ?
+        <>
+          <div>{max.toFixed(precision)}</div>
+          <div>{((max + average) / 2).toFixed(precision)}</div>
+          <div>{average.toFixed(precision)}</div>
+          <div>{((min + average) / 2).toFixed(precision)}</div>
+          <div>{min.toFixed(precision)}</div>
+        </> :
+        <>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </>
     );
   }
 
@@ -74,8 +84,8 @@ export default function History() {
                 const coefficient = rate.rate - min
                 return (
                   <div className={styles.col} key={i} style={{
-                  height: `${minHeight + subHeight / newMax * coefficient}px`
-                }}></div>);
+                    height: `${minHeight + subHeight / newMax * coefficient}px`
+                  }}></div>);
               })}
             </div>
             <div className={styles['x-axis']}>
