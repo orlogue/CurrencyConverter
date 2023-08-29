@@ -27,7 +27,7 @@ export default function Section({ title, parentClasses, canBeHidden = false, rot
         {canBeHidden &&
           <img className={hidden ? styles['hide-svg_closed'] : styles['hide-svg']}
                onClick={handleButtonClick}
-               src={'/assets/arrow-down.svg'}
+               src={'assets/arrow-down.svg'}
                alt='hide button'/>
         }
         <Title title={title}/>
