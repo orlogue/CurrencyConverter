@@ -31,7 +31,7 @@ export type CurrencyActions =
   | { type: "setCurrencyRates", code: string, rates: CurrencyRate }
   | { type: "setHistoricalRates", code: string, rates: HistoricalRate }
 
-export interface CurrencyContext extends CurrencyState {
+export interface ICurrencyContext extends CurrencyState {
   setBaseCurrency: (code: string) => void,
   setTargetCurrency: (code: string) => void,
 }

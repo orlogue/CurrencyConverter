@@ -3,16 +3,16 @@ import axios from "axios";
 import {
   Currencies,
   CurrencyActions,
-  CurrencyContext,
+  ICurrencyContext,
   CurrencyRate,
   CurrencyRates,
   CurrencyState,
   HistoricalRate
 } from "./CurrencyTypes.tsx";
 
-export const context = createContext<CurrencyContext>({} as CurrencyContext);
+export const CurrencyContext = createContext<ICurrencyContext>({} as ICurrencyContext);
 
-export function useCurrencySource(): CurrencyContext {
+export function useCurrencySource(): ICurrencyContext {
   const [{ baseCurrency, targetCurrency, currencies, currencyRates, historicalRates }, dispatch]
     = useReducer((state: CurrencyState, action: CurrencyActions): CurrencyState => {
     switch (action.type) {
@@ -44,7 +44,7 @@ export function useCurrencySource(): CurrencyContext {
         };
       }
       default: {
-        return {} as CurrencyContext
+        return {} as ICurrencyContext
       }
     }
   }, {
@@ -150,5 +150,5 @@ export function useCurrencySource(): CurrencyContext {
 }
 
 export function useCurrency() {
-  return useContext(context)
+  return useContext(CurrencyContext)
 }
