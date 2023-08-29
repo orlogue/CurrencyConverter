@@ -6,23 +6,69 @@
 
   --input-border: solid 1.5px var(--primaryColor);
   --input-border-radius: 10px;
-  --input-height: 1.5rem;
+  --input-height: 2.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }
 
 body {
   font-family: "Futura", -apple-system, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+
+  accent-color: var(--primaryColor);
 }
 
-main {
-  display: grid;
-  width: calc(100vw - 3rem);
-  min-height: calc(100vh - 3rem);
-  gap: 1.5rem;
+.wrapper {
+  display: flex;
+  min-height: 100vh;
   padding: 1.5rem;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas:
-          "converter history history"
-          "costs history history";
+  gap: 1.5rem;
+
+  height: 100%;
+  width: 100%;
+  
+  @media (min-width: 1900px) or (min-height: 1900px) {
+    padding: 20vh 15vw;
+  }
+
+  @media (min-width: 1441px) or (min-height: 1441px) {
+    padding: 10vh 10vw;
+  }
+
+  @media (max-width: 879.98px) {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  @media (max-width: 480.98px) {
+    padding: 0.75rem;
+  }
+}
+
+.flex-column {
+  flex: 1;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  min-height: 100%;
+  min-width: 364px;
+
+  @media (max-width: 879.98px) {
+    gap: 1rem;
+    min-width: auto;
+  }
 }
