@@ -34,6 +34,9 @@ export default function Converter() {
         code: targetCurrency.code
       });
       setTargetValue(() => {
+        if (baseValue === '') {
+          return '';
+        }
         return CalculateValue(baseValue, baseCurrency.code, targetCurrency.code);
       });
     }
