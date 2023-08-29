@@ -13,7 +13,14 @@ import {
 export const CurrencyContext = createContext<ICurrencyContext>({} as ICurrencyContext);
 
 export function useCurrencySource(): ICurrencyContext {
-  const [{ baseCurrency, targetCurrency, currencies, currencyRates, historicalRates }, dispatch]
+  const [{
+    baseCurrency,
+    targetCurrency,
+    currencies,
+    currencyRates,
+    historicalRates,
+    isLoading
+  }, dispatch]
     = useReducer((state: CurrencyState, action: CurrencyActions): CurrencyState => {
     switch (action.type) {
       case "setBaseCurrency": {
@@ -37,6 +44,7 @@ export function useCurrencySource(): ICurrencyContext {
       case "setHistoricalRates": {
         return {
           ...state,
+          isLoading: false,
           historicalRates: {
             ...state.historicalRates,
             [action.code]: action.rates
@@ -52,7 +60,8 @@ export function useCurrencySource(): ICurrencyContext {
     targetCurrency: undefined,
     currencies: {} as Currencies,
     currencyRates: {} as CurrencyRates,
-    historicalRates: undefined
+    historicalRates: undefined,
+    isLoading: true,
   });
 
   useEffect(() => {
@@ -146,7 +155,16 @@ export function useCurrencySource(): ICurrencyContext {
     });
   }, [currencies]);
 
-  return { baseCurrency, targetCurrency, currencies, currencyRates, historicalRates, setBaseCurrency, setTargetCurrency };
+  return {
+    baseCurrency,
+    targetCurrency,
+    currencies,
+    currencyRates,
+    historicalRates,
+    setBaseCurrency,
+    setTargetCurrency,
+    isLoading
+  };
 }
 
 export function useCurrency() {

@@ -22,6 +22,7 @@ export interface CurrencyState {
   currencies: Currencies,
   currencyRates: CurrencyRates,
   historicalRates: HistoricalRates | undefined,
+  isLoading: boolean,
 }
 
 export type CurrencyActions =
