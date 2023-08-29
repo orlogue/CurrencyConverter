@@ -11,4 +11,4 @@ Run `npm install`
 
 `npm run dev` to run server
 
-`npm run lint && npm run dev` to run both
+`npm run lint && npm run dev` to run both (in Terminal)
