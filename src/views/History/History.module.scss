@@ -1,4 +1,135 @@
-.history {
-  grid-area: history;
-  margin-left: 0;
+section.history {
+  flex: 2;
+
+  @media (max-width: 879.98px) {
+    flex: 0;
+  }
+}
+
+.description {
+  font-size: 18px;
+  text-align: center;
+
+  @media (max-width: 319.98px) {
+    font-size: 16px;
+  }
+}
+
+.rates {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  align-items: flex-end;
+  min-height: 200px;
+}
+
+.plot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  padding: 102px 0;
+  margin-top: -90px;
+
+  @media (max-width: 879.98px) or (max-height: 600px) {
+    padding-bottom: 16px;
+  }
+
+  @media (max-width: 480.98px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 380.98px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 319.98px) {
+    font-size: 10px;
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+  &__column {
+    flex: 1;
+    max-width: 500px;
+    margin-right: 1rem;
+
+    @media (max-width: 480.98px) {
+      margin-right: 0;
+    }
+  }
+}
+
+.y-axis {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 190px;
+  min-width: 90px;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-right: 16px;
+  margin-right: 12.5px;
+
+  @media (max-width: 480.98px) {
+    min-width: 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: calc(100% + 25.5px);
+    width: 3px;
+    background-color: var(--primaryColor);
+  }
+
+  & > div {
+    position: relative;
+  }
+
+  & > div::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    right: -20px;
+    height: 3px;
+    width: 11px;
+    background-color: var(--primaryColor);
+  }
+}
+
+.x-axis {
+  display: flex;
+  position: relative;
+  padding-top: 8px;
+  margin-top: 12.5px;
+  justify-content: space-around;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -12.5px;
+    height: 3px;
+    width: calc(100% + 12.5px);
+    background-color: var(--primaryColor);
+  }
+
+  & > div {
+
+  }
+}
+
+.col {
+  display: inline-block;
+  width: 3%;
+  border-radius: 20px 20px 0 0;
+  background-color: #7c43b4;
 }
