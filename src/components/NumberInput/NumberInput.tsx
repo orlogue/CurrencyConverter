@@ -1,10 +1,10 @@
 import './NumberInput.module.scss'
 import React from "react";
 
-export default function NumberInput({ value, setValue, disabled = false }: {
+export default function NumberInput({ value, onChange }: {
   value: string,
   setValue?: React.Dispatch<React.SetStateAction<string>>,
-  disabled?: boolean,
+  onChange: (input: string) => void
 }) {
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     const rule = new RegExp(/^(|0|[1-9][0-9]*)(?:(,|\.)[0-9]{0,2})?$/);
@@ -14,8 +14,8 @@ export default function NumberInput({ value, setValue, disabled = false }: {
       newValue = '0.'
     }
 
-    if (setValue && (rule.test(newValue))) {
-      setValue(newValue);
+    if (rule.test(newValue)) {
+      onChange(newValue);
     }
   }
 
@@ -26,7 +26,6 @@ export default function NumberInput({ value, setValue, disabled = false }: {
       inputMode="decimal"
       onChange={handleInput}
       placeholder="0.00"
-      disabled={disabled}
     />
   );
 }
