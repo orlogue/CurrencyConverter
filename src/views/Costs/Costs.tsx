@@ -1,57 +1,86 @@
 import styles from './Costs.module.scss';
-import Section from "../../components/ui/Section/Section.tsx";
+import Section from "../../components/Section/Section.tsx";
+import { useCurrency } from "../../context/CurrencyContext.tsx";
+import { useEffect, useState } from "react";
+
+const range = [1, 5, 10, 25, 50, 100, 500, 1000, 5000];
 
 export default function Costs() {
-  const range = [1, 5, 10, 25, 50, 100, 500, 1000, 5000];
-  const rangeList = range.map(item =>
-    <td>{item}</td>
-  );
-  const usdToRub = range.map(item =>
-    <td>{(item * 93.94).toFixed(2)}</td>
-  );
-  const usdToRubResultList = rangeList.map((item, i) =>
-    <tr key={i}>
-      {item}
-      {usdToRub[i]}
-    </tr>
-  );
-  const eurToRub = range.map((item, i) =>
-    <td key={i}>{(item * 101.23).toFixed(2)}</td>
-  );
-  const eurToRubResultList = rangeList.map((item, i) =>
-    <tr key={i}>
-      {item}
-      {eurToRub[i]}
-    </tr>
-  );
+  const { baseCurrency, targetCurrency, currencyRates } = useCurrency()
 
+  const [pair, setPair] = useState({
+    base: baseCurrency?.code ?? '',
+    target: targetCurrency?.code ?? ''
+  });
+
+  useEffect(() => {
+    if (pair.base === targetCurrency?.code && pair.target === baseCurrency?.code) {
+      setPair({ base: targetCurrency.code, target: baseCurrency.code })
+    } else {
+      setPair({ base: baseCurrency?.code ?? '', target: targetCurrency?.code ?? '' })
+    }
+  }, [baseCurrency, targetCurrency]);
+
+  const [baseToTargetValues, setBaseToTargetValues] = useState<string[]>([])
+  const [targetToBaseValues, setTargetToBaseValues] = useState<string[]>([])
+
+  useEffect(() => {
+    if (baseCurrency === undefined) return;
+    if (targetCurrency === undefined) return;
+    if (pair.base === targetCurrency.code && pair.target === baseCurrency.code) return;
+    if (Object.keys(currencyRates).length < 2) return;
+
+    if (baseCurrency.code in currencyRates && targetCurrency.code in currencyRates) {
+      setBaseToTargetValues(() =>
+        range.map(leftValue => {
+          return (leftValue * currencyRates[baseCurrency.code][targetCurrency.code]).toFixed(2);
+        })
+      );
+      setTargetToBaseValues(() =>
+        range.map(leftValue => {
+          return (leftValue * currencyRates[targetCurrency.code][baseCurrency.code]).toFixed(2);
+        })
+      );
+    }
+  }, [currencyRates, baseCurrency, targetCurrency]);
 
   return (
     <Section
       parentClasses={styles.costs}
       title="Costs"
+      canBeHidden={true}
     >
       <div className={styles['costs-row']}>
         <table>
           <thead>
           <tr>
-            <th>USD</th>
-            <th>RUB</th>
+            <th>{pair.base}</th>
+            <th>{pair.target}</th>
           </tr>
           </thead>
           <tbody>
-          {usdToRubResultList}
+          {range.map((item, i) =>
+            <tr key={i}>
+              <td>{item}</td>
+              <td>{baseToTargetValues[i]}</td>
+            </tr>
+          )}
           </tbody>
         </table>
         <table>
           <thead>
           <tr>
-            <th>EUR</th>
-            <th>RUB</th>
+            <th>{pair.target}</th>
+            <th>{pair.base}</th>
           </tr>
           </thead>
           <tbody>
-          {eurToRubResultList}
+          {range.map((item, i) =>
+            <tr key={i}>
+              <td>{item}</td>
+              <td>{targetToBaseValues[i]}</td>
+            </tr>
+          )}
           </tbody>
         </table>
       </div>
