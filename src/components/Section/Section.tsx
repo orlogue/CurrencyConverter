@@ -1,6 +1,7 @@
 import styles from "./Section.module.scss";
 import React, { useState } from "react";
 import Title from "../Title/Title.tsx";
+import arrow from '../../assets/arrow-down.svg'
 
 interface SideSectionProps {
   title: string,
@@ -27,7 +28,7 @@ export default function Section({ title, parentClasses, canBeHidden = false, rot
         {canBeHidden &&
           <img className={hidden ? styles['hide-svg_closed'] : styles['hide-svg']}
                onClick={handleButtonClick}
-               src={'assets/arrow-down.svg'}
+               src={arrow}
                alt='hide button'/>
         }
         <Title title={title}/>
