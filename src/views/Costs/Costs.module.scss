@@ -10,10 +10,10 @@ section.costs {
 
 table {
   min-width: 160px;
-  text-align: center;
+  //text-align: center;
   border-spacing: 10px;
 
-  @media (max-width: 365.98px) {
+  @media (max-width: 395.98px) {
     min-width: initial;
   }
 
@@ -22,13 +22,29 @@ table {
   }
 }
 
+table {
+  padding: 0 16px;
+
+  @media (max-width: 395.98px) {
+    padding: 0;
+  }
+}
+
+th {
+  text-align: left;
+}
+
+td:first-child {
+  max-width: 45px;
+}
+
 .costs-row {
   display: grid;
   grid-template-columns: min-content min-content;
   justify-content: center;
   align-items: center;
   padding: 16px 0;
-  
+
   @media (min-width: 880.02px) {
     flex: 1;
     padding: 46px 0 16px 0;
