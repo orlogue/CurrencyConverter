@@ -1,10 +1,12 @@
-# First step
+# Currency Converter
+
+## First step
 
 Create `.env` based on `.env.example` and put API key there
 
 Run `npm install`
 
-# Commands
+## Commands
 `npm run lint` to run ESLint check
 
 `npm run dev` to run server
