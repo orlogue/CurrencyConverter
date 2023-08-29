@@ -1,0 +1,56 @@
+section {
+  border-radius: 1rem;
+  border: solid 2px var(--primaryColor);
+  padding: 12px;
+}
+
+section.hidden {
+  flex: 0 !important;
+}
+
+.section-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 769px) {
+    &.rotate.hidden {
+      flex-direction: column;
+      height: 100%;
+
+      & > div {
+        writing-mode: tb-rl;
+      }
+    }
+  }
+
+  & > button {
+    position: absolute;
+  }
+  & > div {
+    flex: 1;
+  }
+}
+
+.hide-svg {
+  position: absolute;
+  cursor: pointer;
+
+  &_closed {
+    position: absolute;
+    cursor: pointer;
+    transform: rotate(180deg);
+  }
+}
+
+@media (min-width: 769px) {
+  .rotate {
+    & > .hide-svg {
+      transform: rotate(-90deg);
+    }
+
+    & > .hide-svg_closed {
+      transform: rotate(90deg);
+    }
+  }
+}
