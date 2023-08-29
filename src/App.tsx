@@ -4,12 +4,7 @@ import History from "./views/History/History.tsx";
 import styles from './App.module.scss'
 import CurrencyProvider from "./context/CurrencyProvider.tsx";
 
-// import { useState } from "react";
-
 function App() {
-  // const [costsHidden, setCostsHidden] = useState(false)
-  // const [historyHidden, setHistoryHidden] = useState(false)
-
   return (
     <CurrencyProvider>
       <main className={styles.wrapper}>
