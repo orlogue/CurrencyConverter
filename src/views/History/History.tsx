@@ -92,9 +92,14 @@ export default function History() {
                 const newMax = max - min;
                 const coefficient = rate.rate - min
                 return (
-                  <div className={styles.col} key={i} style={{
-                    height: `${minHeight + subHeight / newMax * coefficient}px`
-                  }}></div>);
+                  <div className={styles.col}
+                       key={i}
+                       title={String(rate.rate)}
+                       style={{
+                         height: `${minHeight + subHeight / newMax * coefficient}px`
+                       }}
+                  >
+                  </div>);
               })}
             </div>
             <div className={styles['x-axis']}>
