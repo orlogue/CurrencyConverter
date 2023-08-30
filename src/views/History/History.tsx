@@ -63,12 +63,6 @@ export default function History() {
           rate: rates[targetCurrency.code],
         })
       }
-      const date = new Date()
-      const today = date.toISOString().split('T')[0]
-      temp.push({
-        date: today,
-        rate: currencyRates[baseCurrency.code][targetCurrency.code],
-      })
       setRates(temp)
     }
   }, [historicalRates, baseCurrency, targetCurrency])

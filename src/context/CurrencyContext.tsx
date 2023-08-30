@@ -79,8 +79,6 @@ export function useCurrencySource(): ICurrencyContext {
           type: 'setTargetCurrency',
           payload: response.data.data.USD,
         })
-        getHistoricalRates('RUB')
-        getHistoricalRates('USD')
       })
       .catch((err) => console.log(err))
   }, [])
@@ -108,7 +106,7 @@ export function useCurrencySource(): ICurrencyContext {
     const date = new Date()
     date.setDate(date.getDate() - 1)
     const yesterday = date.toISOString().split('T')[0]
-    date.setDate(date.getDate() - 8)
+    date.setDate(date.getDate() - 9)
     const tenDaysAgo = date.toISOString().split('T')[0]
 
     axios
