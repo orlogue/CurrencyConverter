@@ -3,7 +3,7 @@ section.costs {
   flex: 2;
   flex-direction: column;
 
-  @media (width <= 879.98px) {
+  @media (max-width: 879.98px) {
     flex: 0;
   }
 }
@@ -13,12 +13,12 @@ table {
   min-width: 160px;
   padding: 0 16px;
 
-  @media (width <= 395.98px) {
+  @media (max-width: 395.98px) {
     min-width: initial;
     padding: 0;
   }
 
-  @media (width <= 319.92px) {
+  @media (max-width: 319.92px) {
     font-size: 14px;
   }
 }
@@ -39,7 +39,7 @@ td:first-child {
 
   padding: 16px 0;
 
-  @media (width >= 879.98px) {
+  @media (min-width: 879.98px) {
     flex: 1;
     height: 100%;
     margin-top: -36px;

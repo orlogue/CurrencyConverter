@@ -21,7 +21,7 @@ section.hidden {
     flex: 1;
   }
 
-  @media (width >= 879.98px) {
+  @media (min-width: 879.98px) {
     &.rotate.hidden {
       flex-direction: column;
       height: 100%;
@@ -44,7 +44,7 @@ section.hidden {
   }
 }
 
-@media (width >= 879.98px) {
+@media (min-width: 879.98px) {
   .rotate {
     & > .hide-svg {
       transform: rotate(-90deg);

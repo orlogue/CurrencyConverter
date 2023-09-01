@@ -2,7 +2,7 @@
   align-self: center;
   margin: 0 auto;
 
-  @media (width <= 879.98px) {
+  @media (max-width: 879.98px) {
     margin: auto 0;
   }
 }

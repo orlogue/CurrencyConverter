@@ -4,7 +4,7 @@ input::-webkit-inner-spin-button {
   appearance: none;
 }
 
-input[type="number"] {
+input[type='number'] {
   appearance: textfield;
 }
 
@@ -19,11 +19,11 @@ input {
   border-radius: var(--input-border-radius);
   box-shadow: none;
 
-  @media (width <= 365.98px) {
+  @media (max-width: 365.98px) {
     max-width: 180px;
   }
 
-  @media (width <= 319.98px) {
+  @media (max-width: 319.98px) {
     max-width: 140px;
   }
 }
