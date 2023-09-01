@@ -1,9 +1,9 @@
-import styles from './Title.module.scss'
+import styles from './Title.module.scss';
 
 interface Title {
-  title: string
+  title: string;
 }
 
 export default function Title({ title }: Title) {
-  return <div className={styles.title}>{title}</div>
+  return <div className={styles.title}>{title}</div>;
 }

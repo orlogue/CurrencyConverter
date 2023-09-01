@@ -11,6 +11,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
+    'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:react-hooks/recommended',
@@ -19,28 +20,44 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react', 'react-refresh', 'prettier', 'import'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'react-refresh',
+    'prettier',
+    'import'
+  ],
   settings: {
     react: {
       version: "detect"
     },
-    "import/resolver": {
-      "typescript": {}
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json',
+      }
     }
   },
   rules: {
     'react-hooks/exhaustive-deps': 'off',
-    "prettier/prettier": 2,
-    "import/order": [
-      2,
+    'prettier/prettier': 2,
+    'import/no-unresolved': 'error',
+    'import/order': [
+      'error',
       {
-        "groups": ["external", "builtin", "index", "sibling", "parent", "internal", "type"],
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          ['sibling', 'parent'],
+          'index',
+          'unknown',
+        ],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
         },
-        "newlines-between": "always-and-inside-groups"
-      }
-    ]
+        'newlines-between': 'always'
+      },
+    ],
   }
 }

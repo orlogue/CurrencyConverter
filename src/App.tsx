@@ -1,12 +1,12 @@
-import styles from './App.module.scss'
-import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner.tsx'
-import { useCurrency } from './context/CurrencyContext.tsx'
-import Converter from './views/Converter/Converter.tsx'
-import Costs from './views/Costs/Costs.tsx'
-import History from './views/History/History.tsx'
+import styles from './App.module.scss';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner.tsx';
+import { useCurrency } from './context/CurrencyContext.tsx';
+import Converter from './views/Converter/Converter.tsx';
+import Costs from './views/Costs/Costs.tsx';
+import History from './views/History/History.tsx';
 
 function App() {
-  const { isLoading } = useCurrency()
+  const { isLoading } = useCurrency();
 
   return (
     <main className={styles.wrapper}>
@@ -22,7 +22,7 @@ function App() {
         </>
       )}
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

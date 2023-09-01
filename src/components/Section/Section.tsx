@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import styles from './Section.module.scss'
-
-import arrow from '../../assets/arrow-down.svg'
-import Title from '../Title/Title.tsx'
+import styles from './Section.module.scss';
+import arrow from '../../assets/arrow-down.svg';
+import Title from '../Title/Title.tsx';
 
 interface SideSectionProps {
-  title: string
-  parentClasses: string
-  canBeHidden?: boolean
-  hidden?: boolean
-  rotateBar?: boolean
-  handleButtonClick?: () => void
-  children: React.ReactNode
+  title: string;
+  parentClasses: string;
+  canBeHidden?: boolean;
+  hidden?: boolean;
+  rotateBar?: boolean;
+  handleButtonClick?: () => void;
+  children: React.ReactNode;
 }
 
 export default function Section({
@@ -22,12 +21,12 @@ export default function Section({
   rotateBar = false,
   children,
 }: SideSectionProps) {
-  const [hidden, setHidden] = useState(false)
-  const [rotate, setRotate] = useState(rotateBar)
+  const [hidden, setHidden] = useState(false);
+  const [rotate, setRotate] = useState(rotateBar);
 
   function handleButtonClick() {
-    setHidden(!hidden)
-    setRotate(!rotate)
+    setHidden(!hidden);
+    setRotate(!rotate);
   }
 
   return (
@@ -47,5 +46,5 @@ export default function Section({
       </div>
       {!hidden && children}
     </section>
-  )
+  );
 }
