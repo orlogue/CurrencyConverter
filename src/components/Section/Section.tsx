@@ -32,7 +32,13 @@ export default function Section({
   return (
     <section className={parentClasses + (hidden ? ' ' + styles.hidden : '')}>
       <div
-        className={styles['section-bar'] + ' ' + (hidden ? styles.hidden : '') + ' ' + (rotateBar ? styles.rotate : '')}
+        className={
+          styles['section-bar'] +
+          ' ' +
+          (hidden ? styles.hidden : '') +
+          ' ' +
+          (rotateBar ? styles.rotate : '')
+        }
       >
         {canBeHidden && (
           <img

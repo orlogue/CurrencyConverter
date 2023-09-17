@@ -17,6 +17,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
+    'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -25,17 +26,17 @@ module.exports = {
     'react',
     'react-refresh',
     'prettier',
-    'import'
+    'import',
   ],
   settings: {
     react: {
-      version: "detect"
+      version: 'detect',
     },
     'import/resolver': {
       typescript: {
         project: './tsconfig.json',
-      }
-    }
+      },
+    },
   },
   rules: {
     'react-hooks/exhaustive-deps': 'off',
@@ -56,8 +57,8 @@ module.exports = {
           order: 'asc',
           caseInsensitive: true,
         },
-        'newlines-between': 'always'
+        'newlines-between': 'always',
       },
     ],
-  }
-}
+  },
+};

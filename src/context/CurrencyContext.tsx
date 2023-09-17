@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { useEffect, createContext, useContext, useReducer, useCallback } from 'react';
+import {
+  useEffect,
+  createContext,
+  useContext,
+  useReducer,
+  useCallback,
+} from 'react';
 
 import {
   Currencies,
@@ -11,61 +17,76 @@ import {
   HistoricalRate,
 } from './CurrencyTypes.tsx';
 
-export const CurrencyContext = createContext<ICurrencyContext>({} as ICurrencyContext);
+export const CurrencyContext = createContext<ICurrencyContext>(
+  {} as ICurrencyContext,
+);
 
 export function useCurrencySource(): ICurrencyContext {
-  const [{ baseCurrency, targetCurrency, currencies, currencyRates, historicalRates, isLoading }, dispatch] =
-    useReducer(
-      (state: CurrencyState, action: CurrencyActions): CurrencyState => {
-        switch (action.type) {
-          case 'setBaseCurrency': {
-            return { ...state, baseCurrency: action.payload };
-          }
-          case 'setTargetCurrency': {
-            return { ...state, targetCurrency: action.payload };
-          }
-          case 'setCurrencies': {
-            return { ...state, currencies: action.payload };
-          }
-          case 'setCurrencyRates': {
-            return {
-              ...state,
-              currencyRates: {
-                ...state.currencyRates,
-                [action.code]: action.rates,
-              },
-            };
-          }
-          case 'setHistoricalRates': {
-            return {
-              ...state,
-              isLoading: false,
-              historicalRates: {
-                ...state.historicalRates,
-                [action.code]: action.rates,
-              },
-            };
-          }
-          default: {
-            return {} as ICurrencyContext;
-          }
+  const [
+    {
+      baseCurrency,
+      targetCurrency,
+      currencies,
+      currencyRates,
+      historicalRates,
+      isLoading,
+    },
+    dispatch,
+  ] = useReducer(
+    (state: CurrencyState, action: CurrencyActions): CurrencyState => {
+      switch (action.type) {
+        case 'setBaseCurrency': {
+          return { ...state, baseCurrency: action.payload };
         }
-      },
-      {
-        baseCurrency: undefined,
-        targetCurrency: undefined,
-        currencies: {} as Currencies,
-        currencyRates: {} as CurrencyRates,
-        historicalRates: undefined,
-        isLoading: true,
-      },
-    );
+        case 'setTargetCurrency': {
+          return { ...state, targetCurrency: action.payload };
+        }
+        case 'setCurrencies': {
+          return { ...state, currencies: action.payload };
+        }
+        case 'setCurrencyRates': {
+          return {
+            ...state,
+            currencyRates: {
+              ...state.currencyRates,
+              [action.code]: action.rates,
+            },
+          };
+        }
+        case 'setHistoricalRates': {
+          return {
+            ...state,
+            isLoading: false,
+            historicalRates: {
+              ...state.historicalRates,
+              [action.code]: action.rates,
+            },
+          };
+        }
+        default: {
+          return {} as ICurrencyContext;
+        }
+      }
+    },
+    {
+      baseCurrency: undefined,
+      targetCurrency: undefined,
+      currencies: {} as Currencies,
+      currencyRates: {} as CurrencyRates,
+      historicalRates: undefined,
+      isLoading: true,
+    },
+  );
 
   useEffect(() => {
     axios
       .get<{
         data: Currencies;
-      }>(`${import.meta.env.VITE_API_BASE_URL}/currencies?apikey=${import.meta.env.VITE_API_KEY}`)
+      }>(
+        `${import.meta.env.VITE_API_BASE_URL}/currencies?apikey=${
+          import.meta.env.VITE_API_KEY
+        }`,
+      )
       .then((response) => {
         dispatch({
           type: 'setCurrencies',
@@ -89,7 +110,11 @@ export function useCurrencySource(): ICurrencyContext {
     axios
       .get<{
         data: CurrencyRate;
-      }>(`${import.meta.env.VITE_API_BASE_URL}/latest?apikey=${import.meta.env.VITE_API_KEY}&base_currency=${code}`)
+      }>(
+        `${import.meta.env.VITE_API_BASE_URL}/latest?apikey=${
+          import.meta.env.VITE_API_KEY
+        }&base_currency=${code}`,
+      )
       .then((res) =>
         dispatch({
           type: 'setCurrencyRates',

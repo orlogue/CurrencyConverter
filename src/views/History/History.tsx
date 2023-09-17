@@ -18,7 +18,8 @@ function MinMax(rates: Rate[]): [min: number, max: number] {
 }
 
 export default function History() {
-  const { baseCurrency, targetCurrency, historicalRates, currencyRates } = useCurrency();
+  const { baseCurrency, targetCurrency, historicalRates, currencyRates } =
+    useCurrency();
   const [rates, setRates] = useState<Rate[]>([]);
   const [min, max] = MinMax(rates);
 
@@ -53,7 +54,9 @@ export default function History() {
       baseCurrency.code in currencyRates
     ) {
       const temp: Rate[] = [];
-      for (const [date, rates] of Object.entries(historicalRates[baseCurrency.code])) {
+      for (const [date, rates] of Object.entries(
+        historicalRates[baseCurrency.code],
+      )) {
         temp.push({
           date: date,
           rate: rates[targetCurrency.code],
@@ -96,7 +99,9 @@ export default function History() {
                     key={i}
                     title={String(rate.rate)}
                     style={{
-                      height: `${minHeight + (subHeight / newMax) * coefficient}px`,
+                      height: `${
+                        minHeight + (subHeight / newMax) * coefficient
+                      }px`,
                     }}
                   ></div>
                 );

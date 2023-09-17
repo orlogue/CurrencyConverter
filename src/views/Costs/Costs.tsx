@@ -15,7 +15,10 @@ export default function Costs() {
   });
 
   useEffect(() => {
-    if (pair.base === targetCurrency?.code && pair.target === baseCurrency?.code) {
+    if (
+      pair.base === targetCurrency?.code &&
+      pair.target === baseCurrency?.code
+    ) {
       setPair({ base: targetCurrency.code, target: baseCurrency.code });
     } else {
       setPair({
@@ -31,18 +34,26 @@ export default function Costs() {
   useEffect(() => {
     if (baseCurrency === undefined) return;
     if (targetCurrency === undefined) return;
-    if (pair.base === targetCurrency.code && pair.target === baseCurrency.code) return;
+    if (pair.base === targetCurrency.code && pair.target === baseCurrency.code)
+      return;
     if (Object.keys(currencyRates).length < 2) return;
 
-    if (baseCurrency.code in currencyRates && targetCurrency.code in currencyRates) {
+    if (
+      baseCurrency.code in currencyRates &&
+      targetCurrency.code in currencyRates
+    ) {
       setBaseToTargetValues(() =>
         range.map((leftValue) => {
-          return (leftValue * currencyRates[baseCurrency.code][targetCurrency.code]).toFixed(2);
+          return (
+            leftValue * currencyRates[baseCurrency.code][targetCurrency.code]
+          ).toFixed(2);
         }),
       );
       setTargetToBaseValues(() =>
         range.map((leftValue) => {
-          return (leftValue * currencyRates[targetCurrency.code][baseCurrency.code]).toFixed(2);
+          return (
+            leftValue * currencyRates[targetCurrency.code][baseCurrency.code]
+          ).toFixed(2);
         }),
       );
     }
